@@ -1,0 +1,41 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Metal Slung NeoGeo</title>
+<style>
+*{box-sizing:border-box}
+html,body,#game-container{margin:0;width:100%;height:100%;background:#000;overflow:hidden}
+canvas{touch-action:none}
+</style>
+</head>
+<body>
+<div id="game-container"></div>
+<script>
+var EJS_player="#game-container";
+var EJS_core="neogeo";
+var EJS_gameUrl="./mslug.zip";
+var EJS_pathtodata="https://cdn.jsdelivr.net/gh/ethanaobrien/emulatorjs@main/data/";
+var EJS_startOnLoaded=true;
+var EJS_fullscreenOnLoaded=true;
+var EJS_menuEnabled=true;
+var EJS_controlScheme=0;
+
+var s=document.createElement("script");
+s.src=EJS_pathtodata+"loader.js";
+s.onerror=()=>console.error("Error al cargar EmulatorJS");
+document.head.appendChild(s);
+
+window.addEventListener("load",()=>{
+ setTimeout(()=>{
+  if(!document.fullscreenElement && document.documentElement.requestFullscreen){
+   document.documentElement.requestFullscreen().catch(()=>{});
+  }
+ },1000);
+});
+</script>
+</body>
+</html>
+```
